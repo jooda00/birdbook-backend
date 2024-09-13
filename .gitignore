@@ -39,3 +39,5 @@ out/
 ### Custom ###
 application.yml
 docker-compose.yml
+mysql_data
+.env
