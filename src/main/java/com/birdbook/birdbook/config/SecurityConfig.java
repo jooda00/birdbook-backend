@@ -35,14 +35,14 @@ public class SecurityConfig {
 		http
 			.authorizeHttpRequests((auth) -> auth
 				.requestMatchers(
-					"/**",
 					"/swagger-ui/**",
 					"/v3/api-docs/**",
 					"/swagger-ui.html",
 					"/api-docs/**",
 					"/webjars/**",
 					"/login",
-					"/login/oauth2/**"
+					"/login/oauth2/**",  // 카카오 로그인 경로 허용
+					"/api/auth/**"       // 인증 관련 API 허용
 				).permitAll()
 				.anyRequest().authenticated());
 
