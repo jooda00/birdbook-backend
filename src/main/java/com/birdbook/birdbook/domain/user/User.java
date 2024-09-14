@@ -23,13 +23,11 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String username;
-	private String name;
 	private String role;
 
-	public static User of(String username, String name, String role) {
+	public static User of(String username, String role) {
 		return User.builder()
 			.username(username)
-			.name(name)
 			.role(role)
 			.build();
 	}
