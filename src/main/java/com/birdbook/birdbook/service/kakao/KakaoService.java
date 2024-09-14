@@ -24,6 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class KakaoService {
+	private static final String ROLE = "ROLE_USER";
 	private final String KAKAO_TOKEN_URL = "https://kauth.kakao.com/oauth/token";
 	private final String KAKAO_USER_INFO_URL = "https://kapi.kakao.com/v2/user/me";
 	private final UserRepository userRepository;
@@ -80,12 +81,12 @@ public class KakaoService {
 
 		if (user == null) {
 			// 사용자 저장
-			user = User.of(nickname, "ROLE_USER");
+			user = User.of(nickname, ROLE);
 			userRepository.save(user);
 			log.info("create user : {}", (user.getId() + " " + user.getUsername()));
 		} else {
 			log.info("already existed user info : {}", (user.getId() + " " + user.getUsername()));
 		}
-		return new KakaoUserRes(nickname, "ROLE_USER");
+		return new KakaoUserRes(nickname, ROLE);
 	}
 }
