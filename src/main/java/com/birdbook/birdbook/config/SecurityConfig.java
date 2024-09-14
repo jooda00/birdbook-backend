@@ -34,13 +34,15 @@ public class SecurityConfig {
 		//경로별 인가 작업
 		http
 			.authorizeHttpRequests((auth) -> auth
-				.requestMatchers("/").permitAll()
 				.requestMatchers(
+					"/**",
 					"/swagger-ui/**",
 					"/v3/api-docs/**",
 					"/swagger-ui.html",
 					"/api-docs/**",
-					"/webjars/**"
+					"/webjars/**",
+					"/login",
+					"/login/oauth2/**"
 				).permitAll()
 				.anyRequest().authenticated());
 
