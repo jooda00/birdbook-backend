@@ -6,16 +6,25 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
+import com.birdbook.birdbook.domain.user.User;
 import com.birdbook.birdbook.dto.oauth.KakaoUserInfo;
 import com.birdbook.birdbook.dto.oauth.reponse.CustomOauth2UserResponse;
 import com.birdbook.birdbook.dto.oauth.reponse.Oauth2Response;
 import com.birdbook.birdbook.dto.user.response.UserResponse;
+import com.birdbook.birdbook.repository.user.UserRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
 public class CustomOauth2UserService extends DefaultOAuth2UserService {
+
+	private static final String role = "ROLE_USER";
+	private final UserRepository userRepository;
+
+	public CustomOauth2UserService(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
 
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
@@ -27,13 +36,18 @@ public class CustomOauth2UserService extends DefaultOAuth2UserService {
 		// 서버에서 관리할 유저 식별자
 		String username = response.getProvider() + " " + response.getProviderId();
 
-		UserResponse userResponse = UserResponse.builder()
-			.role("ROLE_USER")
-			.name(response.getName())
-			.username(username)
-			.build();
-		log.info("userResponse dto : {} ", (userResponse.getName() + " " + userResponse.getUsername()));
+		User existedUser = userRepository.findByUsername(username);
 
-		return new CustomOauth2UserResponse(userResponse);
+		if (existedUser == null) {
+			User user = User.of(username, response.getName(), role);
+			userRepository.save(user);
+			log.info("new user info : {} ", (user.getUsername() + " " + user.getName()));
+			return new CustomOauth2UserResponse(UserResponse.from(user));
+		}
+
+		existedUser.of(username, response.getName(), role);
+		userRepository.save(existedUser); // dirty checking transaction 추후
+		log.info("existed user info : {} ", (existedUser.getUsername() + " " + existedUser.getName()));
+		return new CustomOauth2UserResponse(UserResponse.from(existedUser));
 	}
 }
