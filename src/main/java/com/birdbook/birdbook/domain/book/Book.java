@@ -1,5 +1,7 @@
 package com.birdbook.birdbook.domain.book;
 
+import com.birdbook.birdbook.dto.book.request.BookReq;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,4 +25,12 @@ public class Book {
 	private String title;
 	private String author;
 	private String isbn;
+
+	public static Book from(BookReq req) {
+		return Book.builder()
+			.title(req.getTitle())
+			.author(req.getAuthor())
+			.isbn(req.getIsbn())
+			.build();
+	}
 }
