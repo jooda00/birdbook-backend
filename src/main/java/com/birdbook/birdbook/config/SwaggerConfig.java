@@ -28,7 +28,7 @@ public class SwaggerConfig {
 	private Info apiInfo() {
 		return new Info()
 			.title("Bird Book Backend API Docs")
-			.description("독서 기록 웹 서비스")
+			.description("독서 관리 웹 서비스")
 			.version("1.0.0");
 	}
 
