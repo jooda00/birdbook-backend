@@ -1,7 +1,6 @@
 package com.birdbook.birdbook.controller.auth;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +17,6 @@ public class AuthController {
 
 	private final KakaoService kakaoService;
 	private final JwtUtil jwtUtil;
-	private final UserDetailsService userDetailsService;
 
 	@PostMapping("/login/oauth2/code/kakao")
 	public ResponseEntity<String> login(@RequestParam String code) {
