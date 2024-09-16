@@ -1,5 +1,6 @@
 package com.birdbook.birdbook.domain.user;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,6 +22,7 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "USER_ID")
 	private Long id;
 	private String username;
 	private String role;

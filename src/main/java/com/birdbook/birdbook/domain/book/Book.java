@@ -1,11 +1,14 @@
 package com.birdbook.birdbook.domain.book;
 
+import com.birdbook.birdbook.domain.user.User;
 import com.birdbook.birdbook.dto.book.request.BookReq;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,11 +29,16 @@ public class Book {
 	private String author;
 	private String isbn;
 
-	public static Book from(BookReq req) {
+	@ManyToOne
+	@JoinColumn(name = "USER_ID")
+	private User user;
+
+	public static Book of(BookReq req, User user) {
 		return Book.builder()
 			.title(req.getTitle())
 			.author(req.getAuthor())
 			.isbn(req.getIsbn())
+			.user(user)
 			.build();
 	}
 }
