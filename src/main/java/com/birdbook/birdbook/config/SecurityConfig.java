@@ -54,9 +54,9 @@ public class SecurityConfig {
 					"/login",
 					"/login/oauth2/**",  // 카카오 로그인 경로 허용
 					"/api/auth/**", // 인증 관련 API 허용
-					"/graphiql/**", // graphql local에서 확인
-					"/graphql"
+					"/graphiql/**" // graphql local에서 확인
 				).permitAll()
+				.requestMatchers("/graphql").authenticated()
 				.anyRequest().authenticated());
 
 		// session : stateless
