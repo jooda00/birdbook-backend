@@ -9,9 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
 import com.birdbook.birdbook.domain.book.Book;
+import com.birdbook.birdbook.domain.user.User;
 import com.birdbook.birdbook.dto.book.reponse.BookSearchRes;
 import com.birdbook.birdbook.dto.book.request.BookReq;
 import com.birdbook.birdbook.repository.book.BookRepository;
+import com.birdbook.birdbook.repository.user.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +26,7 @@ public class BookService {
 	private final RestTemplate restTemplate;
 	private final String NAVER_BOOK_SEARCH_URL = "https://openapi.naver.com/v1/search/book.json?query={keyword}";
 	private final BookRepository bookRepository;
+	private final UserRepository userRepository;
 	@Value("${naver.client-id}")
 	private String clientId;
 	@Value("${naver.client-secret}")
@@ -44,7 +47,9 @@ public class BookService {
 
 	@Transactional
 	public Book saveBook(BookReq req) {
-		Book book = Book.from(req);
+		User user = userRepository.findById(req.getUserId())
+			.orElseThrow(() -> new IllegalArgumentException("사용자가 존재하지 않습니다."));
+		Book book = Book.of(req, user);
 		bookRepository.save(book);
 		return book;
 	}
