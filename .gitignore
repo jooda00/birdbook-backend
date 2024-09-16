@@ -40,4 +40,5 @@ out/
 application.yml
 docker-compose.yml
 mysql_data
+postgresql_data
 .env

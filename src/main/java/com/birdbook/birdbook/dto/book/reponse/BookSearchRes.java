@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class BookRes {
+public class BookSearchRes {
 	private Item[] items;
 
 	@Getter
