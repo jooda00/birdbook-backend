@@ -40,7 +40,7 @@ Bird Book을 통해 새로운 책과 독서 경험을 발견해보세요 😊
 </details>
 
 ### 📚 ERD
-![img.png](img.png)
+<img src="img.png" width=500 height="300"/>
 
 ### 📚 Swagger UI
 ![img_2.png](img_2.png)
