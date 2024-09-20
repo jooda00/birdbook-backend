@@ -1,13 +1,17 @@
 package com.birdbook.birdbook.controller.note;
 
+import java.util.List;
+
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.birdbook.birdbook.domain.note.Note;
 import com.birdbook.birdbook.dto.note.request.NoteDeleteReq;
 import com.birdbook.birdbook.dto.note.request.NoteReq;
+import com.birdbook.birdbook.dto.note.response.NoteRes;
 import com.birdbook.birdbook.dto.oauth.reponse.CustomUserDetails;
 import com.birdbook.birdbook.service.note.NoteService;
 
@@ -27,5 +31,10 @@ public class NoteController {
 	@MutationMapping
 	public Long deleteNote(@Argument NoteDeleteReq input, @AuthenticationPrincipal CustomUserDetails userDetails) {
 		return noteService.deleteNote(input);
+	}
+
+	@QueryMapping
+	public List<NoteRes> getNotes() {
+		return noteService.getNotes();
 	}
 }
