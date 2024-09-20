@@ -1,0 +1,22 @@
+services:
+  bird-book:
+    build: ../
+    ports:
+      - ${PORT}:8080
+    depends_on:
+      bird-book-db:
+        condition: service_healthy
+  bird-book-db:
+    image: postgres
+    environment:
+      POSTGRES_DB: ${DB_URL}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ${DB_VOLUMES}
+    ports:
+      - ${DB_PORT}:5432
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "${DB_USERNAME}" ]# health check
+      interval: 5s
+      retries: 10
