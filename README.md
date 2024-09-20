@@ -10,11 +10,10 @@ Bird Book을 통해 새로운 책과 독서 경험을 발견해보세요 😊
 |----------------|--------------------------------------------------------|
 | **언어 및 프레임워크** | Java 17, Spring Boot 3.3.3                             |
 | **DataBase**   | PostgreSQL                                             |
-| **CI**      | Github Actions                                         |
+| **CI, Container**      | Github Actions, Docker, Docker compose|
 | **라이브러리**      | Spring Data JPA, Lombok, Kakao Login, Naver Search API |
 | **API 문서화**    | Swagger                                                |
 | **Query**      | GraphQL                                                |
- **container**      | Docker, Docker compose                                 |
 
 ### 📚 테크스펙
 <details>
