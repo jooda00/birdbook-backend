@@ -21,6 +21,7 @@ public class NoteRes {
 			.id(note.getId())
 			.title(note.getTitle())
 			.content(note.getContent())
+			.bookId(note.getBook().getId())
 			.createdAt(note.getCreatedAt())
 			.build();
 	}
