@@ -47,7 +47,8 @@ public class NoteService {
 	public List<NoteRes> getNotes() {
 		List<Note> notes = noteRepository.findAllByOrderByCreatedAtDesc();
 		return notes.stream()
-			.map(note -> NoteRes.from(note))
+			.filter(note -> !note.isDeleted())
+			.map(NoteRes::from)
 			.collect(Collectors.toList());
 	}
 }
