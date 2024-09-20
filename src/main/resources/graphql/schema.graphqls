@@ -17,6 +17,13 @@ type BookLike {
     book: Book!
 }
 
+type Note {
+    id: ID!
+    title: String!
+    content: String!
+    createAt: String!
+}
+
 # input type
 input BookReq {
     title: String!
@@ -30,10 +37,17 @@ input BookLikeReq {
     bookId: Int!
 }
 
+input NoteReq {
+    bookId: Int!
+    title: String!
+    content: String!
+}
+
 # save
 type Mutation {
     saveBook(input: BookReq!): Book!
     saveBookLike(input: BookLikeReq!): BookLike!
+    saveNote(input: NoteReq!): Note!
 }
 
 # Query가 꼭 포함되어야 함
