@@ -40,8 +40,8 @@ public class Note extends BaseEntity {
 		return Note.builder()
 			.title(req.getTitle())
 			.content(req.getContent())
-			.book(book).
-			build();
+			.book(book)
+			.build();
 	}
 
 	public void deleteNote() {

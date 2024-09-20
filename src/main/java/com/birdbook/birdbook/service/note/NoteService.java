@@ -1,5 +1,8 @@
 package com.birdbook.birdbook.service.note;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -7,6 +10,7 @@ import com.birdbook.birdbook.domain.book.Book;
 import com.birdbook.birdbook.domain.note.Note;
 import com.birdbook.birdbook.dto.note.request.NoteDeleteReq;
 import com.birdbook.birdbook.dto.note.request.NoteReq;
+import com.birdbook.birdbook.dto.note.response.NoteRes;
 import com.birdbook.birdbook.repository.book.BookRepository;
 import com.birdbook.birdbook.repository.note.NoteRepository;
 
@@ -38,5 +42,13 @@ public class NoteService {
 		}
 		note.deleteNote();
 		return note.getId();
+	}
+
+	public List<NoteRes> getNotes() {
+		List<Note> notes = noteRepository.findAllByOrderByCreatedAtDesc();
+		return notes.stream()
+			.filter(note -> !note.isDeleted())
+			.map(NoteRes::from)
+			.collect(Collectors.toList());
 	}
 }
