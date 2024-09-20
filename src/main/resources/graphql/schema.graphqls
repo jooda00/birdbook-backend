@@ -5,6 +5,18 @@ type Book {
     isbn: String!
 }
 
+type User {
+    id: ID!
+    username: String!
+    role: String!
+}
+
+type BookLike {
+    id: ID!
+    user: User!
+    book: Book!
+}
+
 # input type
 input BookReq {
     title: String!
@@ -13,9 +25,15 @@ input BookReq {
     userId: Int!
 }
 
+input BookLikeReq {
+    userId: Int!
+    bookId: Int!
+}
+
 # save
 type Mutation {
     saveBook(input: BookReq!): Book!
+    saveBookLike(input: BookLikeReq!): BookLike!
 }
 
 # Query가 꼭 포함되어야 함

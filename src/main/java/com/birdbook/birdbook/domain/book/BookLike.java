@@ -1,9 +1,7 @@
 package com.birdbook.birdbook.domain.book;
 
 import com.birdbook.birdbook.domain.user.User;
-import com.birdbook.birdbook.dto.book.request.BookReq;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,26 +19,24 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder(access = AccessLevel.PRIVATE)
-public class Book {
+public class BookLike {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "BOOK_ID")
 	private Long id;
-	private String title;
-	private String author;
-	private String isbn;
 
 	@ManyToOne
 	@JoinColumn(name = "USER_ID")
 	private User user;
 
-	public static Book of(BookReq req, User user) {
-		return Book.builder()
-			.title(req.getTitle())
-			.author(req.getAuthor())
-			.isbn(req.getIsbn())
+	@ManyToOne
+	@JoinColumn(name = "BOOK_ID")
+	private Book book;
+
+	public static BookLike of(User user, Book book) {
+		return BookLike.builder()
 			.user(user)
+			.book(book)
 			.build();
 	}
 }
