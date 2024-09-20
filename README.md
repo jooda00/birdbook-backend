@@ -2,7 +2,7 @@
 ###### 📘 독서 관리 백엔드 프로그램
 
 ### 📚 개요
-Bird Book은 읽고 싶은 책을 검색하고, 개인적으로 소장하며, 자신의 감상을 기록하고 공유할 수 있는 웹 서비스 입니다.
+Bird Book은 읽고 싶은 책을 검색하고, 개인적으로 소장하며, 감상을 기록하고 공유할 수 있는 웹 서비스 입니다.
 
 Bird Book을 통해 새로운 책과 독서 경험을 발견해보세요 😊
 ### 📚 Skills
@@ -10,11 +10,10 @@ Bird Book을 통해 새로운 책과 독서 경험을 발견해보세요 😊
 |----------------|--------------------------------------------------------|
 | **언어 및 프레임워크** | Java 17, Spring Boot 3.3.3                             |
 | **DataBase**   | PostgreSQL                                             |
-| **CI**      | Github Actions                                         |
+| **CI, Container**      | Github Actions, Docker, Docker compose|
 | **라이브러리**      | Spring Data JPA, Lombok, Kakao Login, Naver Search API |
 | **API 문서화**    | Swagger                                                |
 | **Query**      | GraphQL                                                |
- **container**      | Docker, Docker compose                                 |
 
 ### 📚 테크스펙
 <details>
