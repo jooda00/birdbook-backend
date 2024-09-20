@@ -6,6 +6,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.birdbook.birdbook.domain.note.Note;
+import com.birdbook.birdbook.dto.note.request.NoteDeleteReq;
 import com.birdbook.birdbook.dto.note.request.NoteReq;
 import com.birdbook.birdbook.dto.oauth.reponse.CustomUserDetails;
 import com.birdbook.birdbook.service.note.NoteService;
@@ -21,5 +22,10 @@ public class NoteController {
 	@MutationMapping
 	public Note saveNote(@Argument NoteReq input, @AuthenticationPrincipal CustomUserDetails userDetails) {
 		return noteService.saveNote(input);
+	}
+
+	@MutationMapping
+	public Long deleteNote(@Argument NoteDeleteReq input, @AuthenticationPrincipal CustomUserDetails userDetails) {
+		return noteService.deleteNote(input);
 	}
 }

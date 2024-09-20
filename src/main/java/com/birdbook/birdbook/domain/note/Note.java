@@ -30,6 +30,7 @@ public class Note extends BaseEntity {
 	private Long id;
 	private String title;
 	private String content;
+	private boolean isDeleted = false;
 
 	@ManyToOne
 	@JoinColumn(name = "BOOK_ID")
@@ -41,5 +42,9 @@ public class Note extends BaseEntity {
 			.content(req.getContent())
 			.book(book).
 			build();
+	}
+
+	public void deleteNote() {
+		this.isDeleted = true;
 	}
 }

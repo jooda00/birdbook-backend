@@ -21,7 +21,6 @@ type Note {
     id: ID!
     title: String!
     content: String!
-    createAt: String!
 }
 
 # input type
@@ -43,11 +42,16 @@ input NoteReq {
     content: String!
 }
 
-# save
+input NoteDeleteReq {
+    noteId: Int!
+}
+
+# save / delete
 type Mutation {
     saveBook(input: BookReq!): Book!
     saveBookLike(input: BookLikeReq!): BookLike!
     saveNote(input: NoteReq!): Note!
+    deleteNote(input: NoteDeleteReq!): Int! # 삭제된 노트의 id 값 반환 -> 서브셋 요청 불가
 }
 
 # Query가 꼭 포함되어야 함
