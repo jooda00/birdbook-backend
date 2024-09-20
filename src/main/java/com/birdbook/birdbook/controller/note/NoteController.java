@@ -34,7 +34,7 @@ public class NoteController {
 	}
 
 	@QueryMapping
-	public List<NoteRes> getNotes() {
+	public List<NoteRes> getNotes(@AuthenticationPrincipal CustomUserDetails userDetails) {
 		return noteService.getNotes();
 	}
 }
