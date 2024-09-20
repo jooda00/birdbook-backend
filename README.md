@@ -32,7 +32,7 @@ Bird Book을 통해 새로운 책과 독서 경험을 발견해보세요 😊
 3. `jwt`를 사용하여 사용자 인가를 진행합니다.
 
 
-**✅ `Bearer 인증방싟`을 사용하여 해당 jwt 소유자에게 아래의 api 실행 권한을 부여합니다.**
+**✅ `Bearer 인증방식`을 사용하여 해당 jwt 소유자에게 아래의 api 실행 권한을 부여합니다.**
 ```json
 Authorization: Bearer <token>
 ```
