@@ -40,16 +40,16 @@ Bird Book을 통해 새로운 책과 독서 경험을 발견해보세요 😊
 </details>
 
 ### 📚 ERD
-<img src="img_8.png" width=500 height=300 />
+<img src="images/img_8.png" width=500 height=300 />
 
 ### 📚 Swagger UI
-![img_7.png](img_7.png)
+![img_7.png](images/img_7.png)
 
 ### 📚 GraphQL UI
 <details>
 <summary>책 저장</summary>
 
-![img_1.png](img_1.png)
+![img_1.png](images/img_1.png)
 
 </details>
 
@@ -57,28 +57,28 @@ Bird Book을 통해 새로운 책과 독서 경험을 발견해보세요 😊
 <details>
 <summary>책 삭제</summary>
 
-![img_6.png](img_6.png)
+![img_6.png](images/img_6.png)
 
 </details>
 
 <details>
 <summary>노트 작성</summary>
 
-![img_2.png](img_2.png)
+![img_2.png](images/img_2.png)
 
 </details>
 
 <details>
 <summary>노트 목록 조회</summary>
 
-![img_5.png](img_5.png)
+![img_5.png](images/img_5.png)
 
 </details>
 
 <details>
 <summary>좋아요</summary>
 
-![img_4.png](img_4.png)
+![img_4.png](images/img_4.png)
 
 </details>
 
